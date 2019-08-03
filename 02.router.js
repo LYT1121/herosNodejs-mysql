@@ -9,5 +9,13 @@ const router = express.Router();
 router.get('/index',(req,res)=>{
     controllor.getAllHeroIndex(req,res);
 });
+// 调用请求新增英雄数据的方法=>请求add页面
+router.get('/add',(req,res)=>{
+    controllor.getAddHero(req,res);
+});
+// 调用请求新增英雄数据的方法=>请求新增数据
+router.post('/getAddNewHeros',(req,res)=>{
+
+});
 // 把路由层曝光出去，方便其他调用
 module.exports = router;
