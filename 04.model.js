@@ -26,6 +26,16 @@ const model = {
             // result => 返回语句执行结构
             callback(result);
         })
+    },
+    // 处理获取新增英雄的方法
+    getNewHeros(data,callback){
+        // 需要一个获取新增英雄信息的sql语句
+        let NewHeroSql = `INSERT INTO heros SET \`name\`='${data.name}',\`gender\`='${data.gender}',\`img\`='${data.img}'`;
+        // 执行这个NewHeroSql语句
+        connection.query(NewHeroSql,(err,result,filed)=>{
+            if(err) console.log(err);
+            callback(result);
+        })
     }
 }
 // 把数据处理层曝光，方便其他调用
