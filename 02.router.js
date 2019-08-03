@@ -21,5 +21,17 @@ router.post('/getAddNewHeros',(req,res)=>{
 router.get('/delHeroId',(req,res)=>{
     controllor.delHeroById(req,res);
 });
+// 请求监听/edit =>修改编辑页面
+router.get('/edit',(req,res)=>{
+    controllor.getEditHtml(req,res);
+});
+// 请求获取想要修改的英雄原来的数据的接口
+router.get('/getOldHero',(req,res)=>{
+    controllor.getEditHeroById(req,res);
+});
+// 调用请求修改英雄数据的端口
+router.post('/editHeroById',(req,res)=>{
+    controllor.editHeroById(req,res);
+});
 // 把路由层曝光出去，方便其他调用
 module.exports = router;

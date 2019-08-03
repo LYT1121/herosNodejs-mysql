@@ -50,6 +50,29 @@ const model = {
             callback(result);
         })
     },
+    // 处理根据英雄id获取英雄旧数据的方法
+    getEditHeroById(id,callback){
+        // 需要一个根据id获取这英雄的数据的sql语句
+        let byIdSql = `SELECT * FROM heros WHERE id = ${id}`;
+        // 执行这个byIdSql语句
+        connection.query(byIdSql,(err,result,filed)=>{
+            if(err) console.log(err);
+            callback(result);
+        })
+    },
+    // 获取修改英雄新数据的方法
+    editHero(id,obj,callback){
+        // console.log(id);
+        // console.log(obj);
+        // 需要一个根据id获取这英雄的修改完数据的sql语句
+        let newSql = `UPDATE heros SET \`name\`='${obj.name}',\`img\`='${obj.img}',\`gender\`='${obj.gender}' WHERE id='${id}'`;
+        // 执行这个语句
+        connection.query(newSql,(err,result,filed)=>{
+            if(err) console.log(err);
+            callback(result);
+            // console.log(result);
+        })
+    }
 }
 // 把数据处理层曝光，方便其他调用
 module.exports = model;
