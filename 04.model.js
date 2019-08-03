@@ -36,7 +36,20 @@ const model = {
             if(err) console.log(err);
             callback(result);
         })
-    }
+    },
+    // 处理删除英雄数据的方法
+    delHeroById(id,callback){
+        // 需要一个根据id获取这英雄的数据的sql语句
+        // 实际删除=>不推荐
+        // let byIdSql = `DELETE FROM heros WHERE id = 3`;
+        // 软删除
+        let byIdSql = `UPDATE heros SET isDelete = 1 WHERE id = ${id}`;
+        // 执行这个byIdSql语句
+        connection.query(byIdSql,(err,result,filed)=>{
+            if(err) console.log(err);
+            callback(result);
+        })
+    },
 }
 // 把数据处理层曝光，方便其他调用
 module.exports = model;

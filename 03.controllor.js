@@ -33,6 +33,23 @@ const controllor = {
             res.send(response);
         })
     },
+    // 处理请求获取删除英雄数据
+    delHeroById(req,res){
+        console.log(req.body);
+        model.delHeroById(req.query.id,result=>{
+            let response = {
+                code:501,
+                msg:'删除英雄失败'
+            };
+            // affectedRows=>受影响的行数
+            if(result.affectedRows === 1){
+                response.code = 200;
+                response.msg = '删除英雄成功';
+            }
+            // 返回提示
+            res.send(response);
+        })
+    },
 };
 // 把逻辑层所有方法曝光，方便其他调用
 module.exports = controllor;

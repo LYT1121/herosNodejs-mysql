@@ -17,5 +17,9 @@ router.get('/add',(req,res)=>{
 router.post('/getAddNewHeros',(req,res)=>{
     controllor.getAddNewHeros(req,res);
 });
+// 调用请求删除这个英雄数据的方法
+router.get('/delHeroId',(req,res)=>{
+    controllor.delHeroById(req,res);
+});
 // 把路由层曝光出去，方便其他调用
 module.exports = router;
