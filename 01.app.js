@@ -14,7 +14,7 @@ app.listen(8080,function(){
 app.use('/assets',express.static('assets'));
 app.use('/views',express.static('views'));
 // 设置默认模板引擎
-app.set('view engine',ejs);
+app.set('view engine','ejs');
 // 注册body-parser中间件=>解析post请求的数据
 app.use(bodyParser.urlencoded({extended:false}));
 // 注册路由中间件

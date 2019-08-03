@@ -40,15 +40,19 @@
         </tr>
       </thead>
       <tbody id="tbody">
+        <% for(let i=0; i< arr.length; i++) { 
+          let val = arr[i];
+          %>
         <tr>
-          <td>1</td>
-          <td>狗蛋</td>
-          <td>男</td>
-          <td><img src="../assets/image/0.jpg"></td>
-          <td><a href="./edit.html?id=1">修改</a> 
-            <a data-id="1" href="javascript:void(0);">删除</a>
+          <td><%=val.id%></td>
+          <td><%=val.name%></td>
+          <td><%=val.gender%></td>
+          <td><img src="<%=val.img%>"></td>
+          <td><a href="./edit?id=<%=val.id%>">修改</a> 
+            <a data-id="<%=val.id%>" href="javascript:void(0);">删除</a>
           </td>
         </tr>
+        <% } %>
       </tbody>
     </table>
   </div> 
